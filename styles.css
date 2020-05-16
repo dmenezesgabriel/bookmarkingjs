@@ -1,0 +1,156 @@
+body, .jumbotron {
+    padding: 30px;
+}
+
+body {
+    background-image:  url(img/background-image.jpg);
+    /* Resize to fit in the brownser window (body size) */
+    background-size: cover;
+}
+
+.content {
+    font-size: 10px;
+    line-height: 1.5;
+    /* Size limit*/
+    max-width: 500px;
+    /* Center the floater */
+    margin: 0 auto;
+    position: relative;
+    border-radius: 5px;
+    /* It will make the box bounce */
+}
+
+.floater {
+    background: #fff;
+    /* Round the boarders */
+    transition: 0.3s cubic-bezier(0.175, 0.855, 0.32, 1.4) all;
+    /* Add space between input box and bookmarks list */
+    margin-bottom: 30px;
+    /* Object will be above overlay */
+    z-index: 11;
+}
+
+/* Where the text input goes "What's on your mind */
+.floater input[type=text] {
+    /* Internal size */
+    padding: 30px 20px;
+    /* Remove borders */
+    border: none;
+    font-size: 14px;
+    /* It will make the box bounce */
+    transition: 0.3s cubic-bezier(0.175, 0.855, 0.32, 1.4) all;
+}
+
+/* Where the button goes */
+.floater-bottom {
+    padding: 4px 8px;
+    /* Align button */
+    text-align: right;
+    /* Add a line at the top as a separator */
+    border-top: 1px solid #ddd;
+}
+
+.floater-bottom button {
+    padding: 4px 8px;
+    font-size: 10px;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.80);
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: 0.3s ease opacity;
+    /* Object position to be below */
+    z-index: 10;
+    /* Prevent mouse events like click */
+    pointer-events: none;
+}
+
+body.show-floater .floater {
+    /* Increade the size when the class show-floater is added */
+    transform: scale(1.1);
+}
+
+body.show-floater .floater input[type=text] {
+    padding: 50px 20px;
+    font-size: 18px;
+}
+
+body.show-floater .overlay {
+    opacity: 1;
+    /* When above overlay allow click events */
+    pointer-events: all;
+}
+
+/* Bookmars list styles */
+
+.bookmarks-list {
+    position: relative;
+    z-index: 9;
+}
+
+.bookmark{
+    /* Image and text side by side */
+    display: flex;
+    background: #fff;
+    /* Fix all the delete icons on the top of the div  */
+    position: relative;
+    /* Text color */
+    color: #999;
+    /* Internal size of element */
+    padding: 20px;
+    transition: 0.3s ease all;
+    /* Add a line between bookmarks */
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+}
+
+.bookmark:hover {
+    color: #1ce;
+    /* Remove underline */
+    text-decoration: none;
+}
+
+.bookmark:first-child {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.bookmark:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom: 0;
+}
+
+.bookmark .img {
+    background-color: #ddd;
+    border-radius: 3px;
+    background-size: cover;
+    background-position: top center;
+    width: 120px;
+    height: 80px;
+    margin-right: 20px;
+}
+
+.bookmark .title {
+    display: flex;
+    align-items: center;
+}
+
+.bookmark .bi-x-circle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #eee;
+    font-size: 12px;
+    transition: 0.3s ease color;
+    cursor: pointer;
+}
+
+.bookmark:hover .bi-x-circle {
+    color: #aaa;
+}
